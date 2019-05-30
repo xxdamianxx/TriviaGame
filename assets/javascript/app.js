@@ -25,6 +25,7 @@ let correct_answers = [
     2
 ];
 
+// All variables initialized to zero
 let results = [0,0,0];
 let correct_answer_count = 0;
 let incorrect_answer_count = 0;
@@ -79,6 +80,7 @@ $(document).ready(function(){
         }
     }
 
+    // Calculates the results of the user's answers
     function calculateResults(){
         for(let i = 0; i < questions.length; i++){
             let current_answer = $("input:radio[name=answer" + i + "]:checked").val();
@@ -93,6 +95,7 @@ $(document).ready(function(){
         }
     }
 
+    // Displays the results of the user's answers
     function displayResults(){
         incorrect_answer_count = (questions.length - correct_answer_count);
         $('#result_div').append("<div id='correct_answer_count'>Correct Answers: " + correct_answer_count + "<div>");

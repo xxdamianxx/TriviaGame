@@ -1,3 +1,4 @@
+// Trivia Question
 let questions = [
     "What is the motto of House Stark of Winterfell?",
     "What is the native language of the Targaryen family?",
@@ -6,6 +7,7 @@ let questions = [
     "What is the capital city of The Seven Kingdoms of Westeros?"
 ];
 
+// Possible Answers
 let answers = [
     ["We Do Not Sow", "Winter Is Coming", "Fire And Blood"],
     ["Valyrian", "Westerosi", "Dothraki"],
@@ -14,6 +16,7 @@ let answers = [
     ["Pentos", "High Garden", "King's Landing"]
 ];
 
+// Index in 'answers' array with the correct answer
 let correct_answers = [
     1,
     0,
@@ -29,6 +32,7 @@ let unanswered_count = 0;
 
 $(document).ready(function(){
 
+    // [Start] Button
     $("#start_game").click(function(){
       $("#start_game").hide();
       $("#question_div").show();
@@ -36,15 +40,25 @@ $(document).ready(function(){
       displayQuestions();
     });
 
+    // [Submit] Button
+    $("#end_game").click(function(){
+        $("#question_div").hide();
+        $("#result_div").show();
+        calculateResults();
+        displayResults();
+        clearInterval(interval);
+      });
+
+    // Timer starts at 120 seconds
     function start_timer(){
-        var seconds_left = 20;
+        var seconds_left = 120;
         document.getElementById('timer').innerHTML = seconds_left;
         var interval = setInterval(function() {
         document.getElementById('timer').innerHTML = --seconds_left;
         if (seconds_left <= 0)
         {
             calculateResults();
-            $("#question_div").children().hide(); 
+            $("#question_div").children().hide();
             $("#question_div").hide();
             $("#result_div").show();
             displayResults();
@@ -53,12 +67,14 @@ $(document).ready(function(){
         }, 1000);
     }
 
+    // Displays the questions in 'questions' array
     function displayQuestions(){
         for(let i = 0; i < questions.length; i++){
             $('#question_div').append('<div class="questions" id=' + i + '>' + questions[i] + '</div>');
             $('#'+i).append('<div id=answers_' + i + '></div>');
             for(let j = 0; j < answers[i].length; j++){
-                $('#answers_'+i).append("<input type='radio' name='answer" + i + "'   value='" + answers[i][j] + "'> " + answers[i][j] + "<br></input>  ");
+                let sanitized_value = answers[i][j].replace(/['"]+/g, '');
+                $('#answers_'+i).append("<input type='radio' name='answer" + i + "'   value='" + sanitized_value + "'> " + answers[i][j] + "<br></input>  ");
             }
         }
     }
@@ -66,11 +82,13 @@ $(document).ready(function(){
     function calculateResults(){
         for(let i = 0; i < questions.length; i++){
             let current_answer = $("input:radio[name=answer" + i + "]:checked").val();
+            let correct_answer = answers[i][correct_answers[i]];
+            correct_answer = correct_answer.replace(/['"]+/g, '');
             if (current_answer == null || current_answer == ""){
-                unanswered_count = unanswered_count + 1; 
+                unanswered_count = unanswered_count + 1;
             }
-            if (current_answer == answers[i][correct_answers[i]]){
-                correct_answers = correct_answers + 1;
+            if (current_answer == correct_answer){
+                correct_answer_count = correct_answer_count + 1;
             }
         }
     }

@@ -1,28 +1,63 @@
 // Trivia Question
 let questions = [
+    // Question 1
     "What is the motto of House Stark of Winterfell?",
+    // Question 2
     "What is the native language of the Targaryen family?",
+    // Question 3
     "Who was the prince that conquered The Seven Kingdoms of Westeros?",
+    // Question 4
     "What is the name of Melisandre's God?",
-    "What is the capital city of The Seven Kingdoms of Westeros?"
+    // Question 5
+    "What is the capital city of The Seven Kingdoms of Westeros?",
+    // Question 6
+    "Who gave Daenerys Targaryen three dragon eggs on her wedding day?",
+    // Question 7
+    "Which city in Slaver's Bay holds the Pyramid of the Harpy?",
+    // Question 8
+    "What is the name of the brotherhood that guards the Northern Wall?",
+    // Question 9
+    "What mineral is useful for slaying Wight Walkers?",
+    // Question 10
+    "Which is Daenerys Targaryen's biggest dragon?"
 ];
 
 // Possible Answers
 let answers = [
+    // Question 1
     ["We Do Not Sow", "Winter Is Coming", "Fire And Blood"],
+    // Question 2
     ["Valyrian", "Westerosi", "Dothraki"],
+    // Question 3
     ["Orys Baratheon", "Oberyn Martell", "Aegon Targaryen"],
+    // Question 4
     ["The Maiden", "R'hallor", "Drowned God"],
-    ["Pentos", "High Garden", "King's Landing"]
+    // Question 5
+    ["Pentos", "High Garden", "King's Landing"],
+    // Question 6
+    ["Illyrio Mopatis", "Khal Drogo", "Jorah Mormont"],
+    // Question 7
+    ["Astapor", "Yunkai", "Meereen"],
+    // Question 8
+    ["The Night's Watch", "The Second Sons", "The Golden Company"],
+    // Question 9
+    ["Obsidian", "Sulfur", "Graphite"],
+    // Question 10
+    ["Rhaegal", "Drogon", "Viserion"]
 ];
 
 // Index in 'answers' array with the correct answer
 let correct_answers = [
-    1,
-    0,
-    2,
-    1,
-    2
+    1, // Question 1
+    0, // Question 2
+    2, // Question 3
+    1, // Question 4
+    2, // Question 5
+    0, // Question 6
+    2, // Question 7
+    0, // Question 8
+    0, // Question 9
+    1, // Question 10
 ];
 
 // All variables initialized to zero
